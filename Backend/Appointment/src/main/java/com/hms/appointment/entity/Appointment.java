@@ -1,5 +1,7 @@
 package com.hms.appointment.entity;
 
+import com.hms.appointment.dto.AppointmentDTO;
+import com.hms.appointment.dto.Status;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 
@@ -21,5 +23,12 @@ public class Appointment {
     private Long id;
     private Long patientId;
     private Long doctorId;
-    private LocalDate appointmentTime; 
+    private LocalDate appointmentTime;
+    private Status status;
+    private String Reason;
+    private String notes;
+
+    public AppointmentDTO toDTO(){
+        return new AppointmentDTO(id, patientId, doctorId, appointmentTime, status, Reason, notes);
+    }
 }
