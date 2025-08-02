@@ -1,5 +1,6 @@
 package com.hms.appointment.util;
 
+import com.hms.appointment.exception.HmsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -21,8 +22,8 @@ public class ExceptionControllerAdvice {
         return new ResponseEntity<>(errorInfo, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler
-    public ResponseEntity<ErrorInfo> HmsException(Exception e){
+    @ExceptionHandler(HmsException.class)
+    public ResponseEntity<ErrorInfo> HmsExceptionHandler(Exception e){
         ErrorInfo errorInfo = new ErrorInfo(environment.getProperty(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR.value(), LocalDateTime.now());
         return new ResponseEntity<>(errorInfo, HttpStatus.INTERNAL_SERVER_ERROR);
     }

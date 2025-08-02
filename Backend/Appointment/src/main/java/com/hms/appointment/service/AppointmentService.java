@@ -9,6 +9,6 @@ public interface AppointmentService {
     void cancelAppointment(Long appointmentId) throws HmsException;
     void completeAppointment(Long appointmentId);
     void rescheduleAppointment(Long appointmentId);
-    AppointmentDTO getAppointmentById(Long appointmentId) throws HmsException;
+    AppointmentDTO getAppointmentDetails(Long appointmentId) throws HmsException;
 
 }

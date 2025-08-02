@@ -17,6 +17,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public Long scheduleAppointment(AppointmentDTO appointmentDTO) {
+        appointmentDTO.setStatus(Status.SCHEDULED);
         return appointmentRepository.save(appointmentDTO.toEntity()).getId();
     }
 
@@ -27,7 +28,7 @@ public class AppointmentServiceImpl implements AppointmentService {
             throw new HmsException("APPOINTMENT_ALREADY_CANCELLED");
         }
         appointment.setStatus(Status.CANCELLED);
-        appointmentRepository.save(appointment)
+        appointmentRepository.save(appointment);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public AppointmentDTO getAppointmentById(Long appointmentId) throws HmsException {
+    public AppointmentDTO getAppointmentDetails(Long appointmentId) throws HmsException {
         return appointmentRepository.findById(appointmentId).orElseThrow(()-> new HmsException("APPOINTMENT_NOT_FOUND")).toDTO();
     }
 }
