@@ -25,10 +25,10 @@ public class Appointment {
     private Long doctorId;
     private LocalDate appointmentTime;
     private Status status;
-    private String Reason;
+    private String reason;
     private String notes;
 
     public AppointmentDTO toDTO(){
-        return new AppointmentDTO(id, patientId, doctorId, appointmentTime, status, Reason, notes);
+        return new AppointmentDTO(id, patientId, doctorId, appointmentTime, status, reason, notes);
     }
 }
